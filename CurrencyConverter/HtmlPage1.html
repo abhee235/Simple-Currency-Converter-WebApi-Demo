@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.9.1.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#getlist').click(function (){
+                $.ajax({
+                    url: "http://localhost:62029/api/Currency/1",
+                    dataType: 'json',
+                    success: function (result) {
+                        
+                        $.each(result, function (index, val) {
+                            $("#list").append("<li>" + val.Name + "</li>")
+                           
+                        });
+                    }
+                }
+                    )});
+        });
+    </script>
+   
+    <button type="button" id ="getlist">Get List </button>
+    <p id="list"></p>
+</body>
+</html>
